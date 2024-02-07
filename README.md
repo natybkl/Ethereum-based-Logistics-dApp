@@ -5,7 +5,7 @@ This project builds a web app with an admin dashboard for managing drivers. Admi
 
 ## Usage
 
-The first things you need to do are cloning this repository and installing its
+The first things you need to do are clone this repository and install its
 dependencies:
 
 ```sh
@@ -36,7 +36,10 @@ npm start
 ```
 
 Open [http://localhost:3000/](http://localhost:3000/) to see your Dapp. You will
-need to have [Coinbase Wallet](https://www.coinbase.com/wallet) or [Metamask](https://metamask.io) installed and listening to
-`localhost 8545`.
+need to have [Coinbase Wallet](https://www.coinbase.com/wallet) or [Metamask](https://metamask.io) installed and listen to
+`localhost 8545`. If you are going to use Metamask, the Chain Id used for `localhost 8545` is  331337. 
+
+![image](https://github.com/natybkl/Ethereum-based-Logistics-dApp/assets/62074050/d5f27039-938c-43b6-9ff4-fd6702607909)
+
 
 
