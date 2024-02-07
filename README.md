@@ -1,6 +1,6 @@
 # Ethereum-based-Logistics-dApp
 
-This project builds a web app with an admin dashboard for managing drivers. Admins can create driver accounts, assign tasks, and approve opt-in requests, streamlining logistics operations. The admin dashboard and the smart contract are inspired by Hardhat's dApp starter project ![Hardhat Boilerplate](https://github.com/NomicFoundation/hardhat-boilerplate).
+This project builds a web app with an admin dashboard for managing drivers. Admins can create driver accounts, assign tasks, and approve opt-in requests, streamlining logistics operations. The admin dashboard and the smart contract are inspired by Hardhat's dApp starter project [Hardhat Boilerplate](https://github.com/NomicFoundation/hardhat-boilerplate).
 
 
 ## Usage
