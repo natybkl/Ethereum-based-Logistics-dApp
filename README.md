@@ -19,6 +19,9 @@ Once installed, let's run Hardhat's testing network:
 ```sh
 npx hardhat node
 ```
+This should bring a result similar to this:
+![image](https://github.com/natybkl/Ethereum-based-Logistics-dApp/assets/62074050/a4be99d9-91c1-41fd-846f-b23880f45f3f)
+
 
 Then, on a new terminal, go to the repository's root folder and run this to
 deploy your contract:
