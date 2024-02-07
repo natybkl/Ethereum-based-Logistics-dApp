@@ -1,0 +1,40 @@
+.driver-form {
+    margin-top: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f2f2f2;
+    width: 300px; /* Adjust the width to your preference */
+    margin-left: 220px;
+    margin-right: auto;
+  }
+  
+  .driver-form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .driver-form input[type="text"],
+  .driver-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .driver-form button {
+    background-color: #2a77c4;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .driver-form button:hover {
+    background-color: #1e5f9d;
+  }
+  
+  .driver-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
