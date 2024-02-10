@@ -6,6 +6,7 @@ import { ethers } from "ethers";
 // We import the contract's artifacts and address here, as we are going to be
 // using them with ethers
 import TokenArtifact from "../contracts/Token.json";
+import AccountArtifact from "../contracts/AccountManager.json";
 import contractAddress from "../contracts/contract-address.json";
 
 // All the logic of this dapp is contained in the Dapp component.
@@ -13,6 +14,7 @@ import contractAddress from "../contracts/contract-address.json";
 // logic. They just render HTML.
 import { NoWalletDetected } from "./NoWalletDetected";
 import { DriverTable } from "./DriverTable";
+import { DriverForm } from "./DriverForm";
 import { ConnectWallet } from "./ConnectWallet";
 import { Loading } from "./Loading";
 import { Transfer } from "./Transfer";
@@ -93,77 +95,11 @@ export class Dapp extends React.Component {
       <div>
         {/* Render the NavBar component */}
         <NavBar />
-        <div className="container p-4">
-          <div className="row">
-            <div className="col-12">
-              <h1>
-                {this.state.tokenData.name} ({this.state.tokenData.symbol})
-              </h1>
-              <p>
-                Welcome <b>{this.state.selectedAddress}</b>, you have{" "}
-                <b>
-                  {this.state.balance.toString()} {this.state.tokenData.symbol}
-                </b>
-                .
-              </p>
-            </div>
-          </div>
-
-          <hr />
-
-          <div className="row">
-            <div className="col-12">
-              {/* 
-                Sending a transaction isn't an immediate action. You have to wait
-                for it to be mined.
-                If we are waiting for one, we show a message here.
-              */}
-              {this.state.txBeingSent && (
-                <WaitingForTransactionMessage txHash={this.state.txBeingSent} />
-              )}
-
-              {/* 
-                Sending a transaction can fail in multiple ways. 
-                If that happened, we show a message here.
-              */}
-              {this.state.transactionError && (
-                <TransactionErrorMessage
-                  message={this._getRpcErrorMessage(this.state.transactionError)}
-                  dismiss={() => this._dismissTransactionError()}
-                />
-              )}
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-12">
-              {/*
-                If the user has no tokens, we don't show the Transfer form
-              */}
-              {this.state.balance.eq(0) && (
-                <NoTokensMessage selectedAddress={this.state.selectedAddress} />
-              )}
-
-              {/*
-                This component displays a form that the user can use to send a 
-                transaction and transfer some tokens.
-                The component doesn't have logic, it just calls the transferTokens
-                callback.
-              */}
-              {this.state.balance.gt(0) && (
-                <Transfer
-                  transferTokens={(to, amount) =>
-                    this._transferTokens(to, amount)
-                  }
-                  tokenSymbol={this.state.tokenData.symbol}
-                />
-              )}
-            </div>
-          </div>
-        </div>
-        <DriverTable/>
+        <DriverTable />
+        <DriverForm onCreateAccount={(name, address) => this._createAccount(name, address)} />
       </div>
     );
+
   }
 
   componentWillUnmount() {
@@ -171,6 +107,27 @@ export class Dapp extends React.Component {
     // gets unmounted
     this._stopPollingData();
   }
+
+_initializeAccountContract() {
+    this._account = new ethers.Contract(
+      contractAddress.Account, // Use the address of the deployed AccountManager contract
+      AccountArtifact.abi,
+      this._provider.getSigner(0)
+    );
+}
+
+async _createAccount(name, address) {
+    console.log("1")
+    this._initializeAccountContract();
+    try {
+        const tx = await this._account.createAccount(name, address);
+        await tx.wait();
+        console.log('Account created successfully.');
+    } catch (error) {
+        console.error('Error creating account:', error);
+    }
+}
+
 
   async _connectWallet() {
     // This method is run when the user clicks the Connect. It connects the

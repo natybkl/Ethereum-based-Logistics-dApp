@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
 import './../css/DriverForm.css';
 
-export function DriverForm({ onAddDriver }) {
+export function DriverForm({ onCreateAccount }) {
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
   const [privateKey, setPrivateKey] = useState('');
+  const [showForm, setShowForm] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Create a driver object with the form values
-    const driver = {
-      name,
-      address,
-      privateKey,
-    };
-    // Call the onAddDriver function from the parent component and pass the driver object
-    onAddDriver(driver);
+
+    // Call the onCreateAccount function from the parent component and pass the input values
+    onCreateAccount(name, address);
+
     // Reset form values
     setName('');
     setAddress('');
@@ -23,35 +20,31 @@ export function DriverForm({ onAddDriver }) {
   };
 
   return (
-    <form className="driver-form" onSubmit={handleSubmit}>
-      <label htmlFor="name">Name:</label>
-      <input
-        type="text"
-        id="name"
-        value={name}
-        onChange={(event) => setName(event.target.value)}
-        required
-      />
+    <div>
+      {!showForm && <button className="add-drivers-button" onClick={() => setShowForm(true)}>Create Account</button>}
+      {showForm && (
+        <form className="driver-form" onSubmit={handleSubmit}>
+          <label htmlFor="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            required
+          />
 
-      <label htmlFor="address">Address:</label>
-      <input
-        type="text"
-        id="address"
-        value={address}
-        onChange={(event) => setAddress(event.target.value)}
-        required
-      />
+          <label htmlFor="address">Address:</label>
+          <input
+            type="text"
+            id="address"
+            value={address}
+            onChange={(event) => setAddress(event.target.value)}
+            required
+          />
 
-      <label htmlFor="private-key">Private Key:</label>
-      <input
-        type="password"
-        id="private-key"
-        value={privateKey}
-        onChange={(event) => setPrivateKey(event.target.value)}
-        required
-      />
-
-      <button type="submit">Add Driver</button>
-    </form>
+          <button type="submit">Create Account</button>
+        </form>
+      )}
+    </div>
   );
 }

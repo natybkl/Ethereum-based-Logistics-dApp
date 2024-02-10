@@ -30,13 +30,16 @@ export function Transfer({ transferTokens, tokenSymbol }) {
             required
           />
         </div>
+
         <div className="form-group">
           <label>Recipient address</label>
           <input className="form-control" type="text" name="to" required />
         </div>
+
         <div className="form-group">
           <input className="btn btn-primary" type="submit" value="Transfer" />
         </div>
+        
       </form>
     </div>
   );

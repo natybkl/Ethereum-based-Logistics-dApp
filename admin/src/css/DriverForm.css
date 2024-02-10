@@ -21,6 +21,16 @@
     margin-bottom: 10px;
   }
   
+  .add-drivers-button {
+    background-color: #2a77c4;
+    color: white;
+    margin-top: 20px;
+    margin-left: 220px;
+    padding: 5px 5px;
+    border: 2px solid transparent;
+    cursor: pointer;
+  }
+
   .driver-form button {
     background-color: #2a77c4;
     color: white;
