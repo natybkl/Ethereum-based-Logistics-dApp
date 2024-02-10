@@ -1,0 +1,27 @@
+.driver-table {
+    width: calc(100% - 500px);
+    border-collapse: collapse;
+    margin-left: 220px;
+    margin-right: 500px;
+    margin-top: 50px;
+  }
+  
+  .header-row {
+    background-color: #2a77c4;
+    color: white;
+  }
+  
+
+  .driver-table td {
+    border-bottom: 1px solid black;
+    background-color: white;
+    color: black;
+  }
+  
+  .add-driver-button {
+    background-color: #2a77c4;
+    color: white;
+    margin-left: 220px;
+    border: none;
+    margin-top: 10px;
+  }
