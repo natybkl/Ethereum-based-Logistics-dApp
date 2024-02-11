@@ -1,6 +1,6 @@
 {
   "_format": "hh-sol-artifact-1",
-  "contractName": "GeoLogixRefund",
+  "contractName": "gps_tracker",
   "sourceName": "contracts/gps_tracker.sol",
   "abi": [
     {
