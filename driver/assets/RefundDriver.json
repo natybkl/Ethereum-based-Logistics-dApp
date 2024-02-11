@@ -1,7 +1,7 @@
 {
   "_format": "hh-sol-artifact-1",
-  "contractName": "gps_tracker",
-  "sourceName": "contracts/gps_tracker.sol",
+  "contractName": "RefundDriver",
+  "sourceName": "contracts/RefundDriver.sol",
   "abi": [
     {
       "inputs": [
